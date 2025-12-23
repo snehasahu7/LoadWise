@@ -2,8 +2,8 @@ import jwt from "jsonwebtoken";
 
 const authmiddleware = (req, res, next)=>{
     const jwtheaders = req.headers.authorization;
-    if(!jwtheaders){
-        return res.status(401).json({message:"Authorization header missing!"});
+    if(!jwtheaders || !jwtheaders.startsWith("Bearer ")){
+        return res.status(401).json({message:"Unauthorized! "});
     }
     const token = jwtheaders.split(" ")[1];
     try{
