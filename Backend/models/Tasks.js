@@ -15,6 +15,10 @@ const taskSchema = new mongoose.Schema(
     }
 );
 
+taskSchema.index({ assignedTo: 1, status: 1 });
+
+
+
 const Task = mongoose.model("Task", taskSchema);
 
 export default Task;
